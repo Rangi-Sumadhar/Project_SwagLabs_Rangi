@@ -2,12 +2,17 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
+    <parameter name="browser" value="Chrome"/>
     <classes>
       <class name="producttest.TeamNTest">
         <methods>
+          <include name="ReportSetup"/>
+          <include name="BrowserSetup"/>
           <include name="Login"/>
+          <include name="ReportTerminate"/>
+          <include name="AddProduct"/>
           <include name="logout"/>
-          <include name="RangiSumadhar"/>
+          <include name="closeBrowser"/>
         </methods>
       </class> <!-- producttest.TeamNTest -->
     </classes>

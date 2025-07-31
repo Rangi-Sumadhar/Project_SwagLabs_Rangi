@@ -5,10 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
 import pagerepository.LoginPage;
 import pagerepository.ProductPage;
 
@@ -18,19 +27,45 @@ import pagerepository.ProductPage;
 public class BaseConfig extends PropertiesLibrary
 
 {
-	
 	public static WebDriver staticdriver;
 	public WebDriver driver;
 	public JavascriptExecutor js;
 	
+	public ExtentSparkReporter spark;
+	public ExtentReports report;
+	public ExtentTest test;
+	
+	@BeforeTest
+	public void ReportSetup()
+	{
+		// Create Spark Report
+		spark = new ExtentSparkReporter("./AdvancedReports/report.html");
+
+		// Configure sparkReport information
+		spark.config().setDocumentTitle("Regression testing for SwagLabs");
+		spark.config().setReportName("Regression Suite");
+		spark.config().setTheme(Theme.DARK);
+
+		// Create Extent Report
+		report = new ExtentReports();
+
+		// Attach the Spark Report and Extent Report
+		report.attachReporter(spark);
+
+		// Configure the system Information in Extent Report
+		report.setSystemInfo("DeviceName", "RangiSumadhar");
+		report.setSystemInfo("OperatingSystem", "MacOS");
+		report.setSystemInfo("Browser", "Chrome");
+		// report.setSystemInfo("Browser Version", "");
+		
+	}
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void BrowserSetup(String browsername)
 	{
-	
-//		Open the Browser 
-
+//		Open the Browser
+		
 		WebDriverLibrary.openBrowswer(browsername);
 		driver = WebDriverLibrary.driver;
 		staticdriver = WebDriverLibrary.driver;
@@ -87,8 +122,7 @@ public class BaseConfig extends PropertiesLibrary
 		
 		
 	}	
-	
-	@AfterClass
+	@AfterMethod
 	public void logout()
 	{
 		ProductPage productpage = new ProductPage(driver);
@@ -113,6 +147,11 @@ public class BaseConfig extends PropertiesLibrary
 		
 //		Click on the Logout button
 		productpage.getlogoutlink().click();
+	}
+	
+	@AfterClass
+	public void closeBrowser()
+	{
 		
 //		Verify the login page
 		System.out.println(WebDriverLibrary.verifyUrl());
@@ -121,6 +160,12 @@ public class BaseConfig extends PropertiesLibrary
 		driver.close();
 	}
 	
+	@AfterTest
+	public void ReportTerminate()
+	{
+		//Flush the Report Information
+		report.flush();
+	}
 	
 	@DataProvider(name ="data")
 	public Object[][] getData()

@@ -12,7 +12,6 @@
 
 
 <dependencies>
-
  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
@@ -59,7 +58,6 @@
     <artifactId>lombok</artifactId>
     <version>1.18.30</version>
 </dependency>
-
 </dependencies>
 
 

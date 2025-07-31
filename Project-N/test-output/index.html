@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Suite" class="navigator-link ">
-                    <span>Project_TeamN.xml</span>
+                    <span>RegressionTest.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -103,7 +103,7 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="producttest.TeamNTest" class="method navigator-link" hash-for-method="RangiSumadhar">RangiSumadhar</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="producttest.TeamNTest" class="method navigator-link" hash-for-method="AddProduct">AddProduct</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -126,9 +126,9 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="RangiSumadhar">
-                  </a> <!-- RangiSumadhar -->
-                  <span class="method-name">RangiSumadhar</span>
+                  <a name="AddProduct">
+                  </a> <!-- AddProduct -->
+                  <span class="method-name">AddProduct</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -136,7 +136,7 @@
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/Users/rangisumadhar/eclipse-workspace/Project-N/Project_TeamN.xml</span>
+            <span class="header-content">/Users/rangisumadhar/git/repository/Project-N/RegressionTest.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -144,7 +144,7 @@
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
-    &lt;parameter name=&quot;browser&quot; value=&quot;edge&quot;/&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;Chrome&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;producttest.TeamNTest&quot;/&gt;
     &lt;/classes&gt;
@@ -188,14 +188,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'RangiSumadhar')
+data.setCell(0, 1, 'AddProduct')
 data.setCell(0, 2, 'producttest.TeamNTest')
-data.setCell(0, 3, 3173);
+data.setCell(0, 3, 8978);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 seconds</span>
+              <span class="suite-total-time">Total running time: 8 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -222,22 +222,34 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">producttest.TeamNTest</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">BrowserSetup(edge)</span>
+              <div class="configuration-test before">
+                <span class="method-name">ReportSetup</span>
                 <span class="method-start">0 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-class before">
+                <span class="method-name">BrowserSetup(Chrome)</span>
+                <span class="method-start">221 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">Login</span>
-                <span class="method-start">12251 ms</span>
+                <span class="method-start">9596 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">RangiSumadhar</span>
-                <span class="method-start">16495 ms</span>
+                <span class="method-name">AddProduct</span>
+                <span class="method-start">15941 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-class after">
+              <div class="configuration-method after">
                 <span class="method-name">logout</span>
-                <span class="method-start">20023 ms</span>
+                <span class="method-start">25193 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">closeBrowser</span>
+                <span class="method-start">26996 ms</span>
               </div> <!-- configuration-class after -->
+              <div class="configuration-test after">
+                <span class="method-name">ReportTerminate</span>
+                <span class="method-start">27139 ms</span>
+              </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

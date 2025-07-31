@@ -1,8 +1,8 @@
 package producttest;
 
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import com.aventstack.extentreports.Status;
 import org.testng.AssertJUnit;
 import genericlibrary.BaseConfig;
 import genericlibrary.WebDriverLibrary;
@@ -19,6 +19,19 @@ public class TeamNTest extends BaseConfig
 	@Test 
 	public void AddProduct()
 	{
+		
+		// Create test information
+		test = report.createTest("RegressionTest");
+
+		// Steps information (Instead of Reporter.log, we will be writing test.log)
+		test.log(Status.INFO, "Step 1 : Launching Browser Succesful");
+
+		test.log(Status.INFO, "Step 2 : Navigating to application via URL Succesful");
+
+		test.log(Status.INFO, "Step 3 : Verified WebPage");
+		
+		test.log(Status.SKIP, "Step 5 : WebElement is hidden");
+
 //		Verify the page
 		System.out.println(WebDriverLibrary.verifyUrl());
 		
@@ -55,6 +68,10 @@ public class TeamNTest extends BaseConfig
 		
 //		Verify there are 3 products on the cart icon
 		AssertJUnit.assertEquals("3",productpage.getcart_items().getText());
+		boolean a = true;
+		if (a == true) {
+			test.log(Status.PASS, "Step 4 : WebElement displayed");
+		}
 		
 //		Click on Cart icon
 		productpage.getcarticon().click();
